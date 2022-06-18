@@ -6,7 +6,7 @@ const Navbar = ({ router }) => {
     <nav className="bg-gray-700">
       <div className="font-bold text-neutral-100 p-4 max-w-7xl mx-auto container tracking-widest flex items-center justify-between">
         <Link href="/">
-          <a className="text-base md:text-4xl">
+          <a className="text-4xl">
             <svg
               id="emoji"
               viewBox="0 0 72 72"
