@@ -3,6 +3,10 @@ import Image from 'next/image';
 import Meta from '../../../components/Meta';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
+import { useRef, useState } from 'react';
+
+import { useLocalStorage } from 'usehooks-ts';
+import Swal from 'sweetalert2';
 
 const SlRating = dynamic(
   () =>
@@ -17,6 +21,28 @@ const SlRating = dynamic(
 import { server } from '../../../config';
 
 const Movie = ({ movie }) => {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 2000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer);
+      toast.addEventListener('mouseleave', Swal.resumeTimer);
+    },
+  });
+  const ratingId = `rating_${movie.id}`;
+  const success = useRef(null);
+  const [rating, setRating] = useLocalStorage(ratingId, 0);
+  const saveRating = (e) => {
+    setRating(e.target.value);
+
+    Toast.fire({
+      icon: 'success',
+      title: 'Your changes have been saved',
+    });
+  };
   return (
     <div className="relative container w-full h-screen pt-6 flex justify-center ">
       <Meta title={movie.title} />
@@ -73,7 +99,8 @@ const Movie = ({ movie }) => {
           <p>How do you like this film ?</p>
           <div className="col-start-2 mt-2">
             <SlRating
-              value={3}
+              value={rating}
+              onSlChange={(e) => saveRating(e)}
               precision={0.5}
               max={5}
               style={{ '--symbol-size': '2rem' }}
@@ -91,10 +118,10 @@ export async function getStaticProps(context) {
     `${server}/${id}?api_key=${process.env.API_KEY}&language=en-US&page=1`
   );
   const movie = res.data;
-  const ratingId = `rating_${movie.id}`;
+  // const ratingId = `rating_${movie.id}`;
 
   return {
-    props: { movie, ratingId },
+    props: { movie },
   };
 }
 
