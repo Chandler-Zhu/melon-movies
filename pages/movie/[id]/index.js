@@ -46,8 +46,8 @@ const Movie = ({ movie }) => {
   return (
     <div className="relative container w-full h-screen pt-6 flex justify-center ">
       <Meta title={movie.title} />
-      <div className="  mx-2 h-[75vh] gap-x-8 grid grid-cols-[6fr_4fr] grid-rows-[1fr_1fr_3fr_1fr_1fr_1fr] items-center content-start">
-        <div className="absolute top-10 left-10 text-slate-500 group hover:text-slate-800">
+      <div className="  mx-2 h-[75vh] gap-x-8 md:grid flex-col md:grid-cols-[6fr_4fr] grid-rows-[1fr_1fr_3fr_1fr_1fr_1fr] items-center content-start">
+        <div className="md:absolute w-max mb-6 top-10 left-10 text-slate-500 group hover:text-slate-800">
           <Link href="/">
             <a>
               <svg
@@ -70,7 +70,7 @@ const Movie = ({ movie }) => {
             </a>
           </Link>
         </div>
-        <div className="[grid-row:2/7] col-start-1 mr-3 rounded-md">
+        <div className="[grid-row:2/7] col-start-1 mr-3 rounded-md md:ml-8">
           <Image
             src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
             width="1000"
@@ -82,7 +82,9 @@ const Movie = ({ movie }) => {
         </div>
         <div className="col-start-2"></div>
         <div className="[grid-row:2/7] col-start-2 flex flex-col items-start">
-          <h1 className="font-bold text-2xl  col-start-2  ">{movie.title}</h1>
+          <h1 className="font-bold text-2xl mt-2 col-start-2  ">
+            {movie.title}
+          </h1>
           <p className="text-gray-800 text-md mt-6 col-start-2 w-[350px] ">
             {movie.overview}
           </p>
@@ -96,15 +98,17 @@ const Movie = ({ movie }) => {
             Release Date:{' '}
             <span className="font-bold">{movie.release_date}</span>
           </p>
-          <p>How do you like this film ?</p>
-          <div className="col-start-2 mt-2">
-            <SlRating
-              value={rating}
-              onSlChange={(e) => saveRating(e)}
-              precision={0.5}
-              max={5}
-              style={{ '--symbol-size': '2rem' }}
-            />
+          <div className=" self-center md:self-start">
+            <p>How do you like this film ?</p>
+            <div className="col-start-2 mt-2">
+              <SlRating
+                value={rating}
+                onSlChange={(e) => saveRating(e)}
+                precision={0.5}
+                max={5}
+                style={{ '--symbol-size': '2rem' }}
+              />
+            </div>
           </div>
         </div>
       </div>
