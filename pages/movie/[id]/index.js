@@ -85,7 +85,7 @@ const Movie = ({ movie }) => {
           <h1 className="font-bold text-2xl mt-2 col-start-2  ">
             {movie.title}
           </h1>
-          <p className="text-gray-800 text-md mt-6 col-start-2 w-[350px] ">
+          <p className="text-gray-800 text-md mt-6 col-start-2 w-[473px] md:w-[373px] ">
             {movie.overview}
           </p>
           <p className="mt-5 text-gray-600 text-sm col-start-2 self-start">
