@@ -21,7 +21,13 @@ export default function Home({ movies }) {
             href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
             rel="stylesheet"
           />
-          <link rel="icon" href="/favicon.ico" />
+
+          <link
+            rel="icon"
+            type="image/svg+xml"
+            href="/favicon.svg"
+            sizes="any"
+          ></link>
         </Head>
 
         <motion.main
