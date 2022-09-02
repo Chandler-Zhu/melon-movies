@@ -7,7 +7,7 @@ const contact = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="text-center mt-10"
+      className="text-center mt-10 min-h-[calc(65vh+1rem)]"
     >
       <Meta title="Contact Me" />
       <h1 className="text-4xl font-bold">Contact Me</h1>
