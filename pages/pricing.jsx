@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const pricing = () => {
   return (
-    <div className=" mt-10 mx-4 min-h-[75vh] ">
+    <div className=" mt-10 mx-4 min-h-[700px] ">
       <Meta title="Pricing" />
       <motion.h1
         initial={{ opacity: 0 }}
